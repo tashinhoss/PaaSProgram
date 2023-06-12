@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Nth Largest Number</title>
+</head>
+<body>
+    <h1>Find Nth Largest Number</h1>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    <form action="/" method="post">
+        <label for="numbers">Enter numbers (comma-separated):</label>
+        <input type="text" id="numbers" name="numbers" required>
+
+        <label for="n">Enter the value of N:</label>
+        <input type="number" id="n" name="n" min="1" required>
+
+        <button type="submit">Find</button>
+    </form>
+
+    {% if nth_largest %}
+        <p>The {{ n }}th largest number is: {{ nth_largest }}</p>
+    {% endif %}
+</body>
+</html>
