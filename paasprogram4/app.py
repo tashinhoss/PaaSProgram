@@ -8,20 +8,17 @@ def find_nth_largest():
         numbers = request.form.get('numbers')
         n = int(request.form.get('n'))
 
-        # Convert the input string of numbers to a list of integers
-        numbers_list = list(map(int, numbers.split(',')))
-
-        if len(numbers_list) < n:
-            return render_template('index.html', error='Invalid input')
-
-        # Sort the numbers in descending order
+        numbers_list = list(map(int, numbers.split()))
         numbers_list.sort(reverse=True)
 
-        nth_largest = numbers_list[n - 1]
+        if 1 <= n <= len(numbers_list):
+            nth_largest = numbers_list[n-1]
+        else:
+            nth_largest = 'Invalid input'
 
-        return render_template('index.html', nth_largest=nth_largest)
+        return render_template('index.html', nth_largest=nth_largest, numbers=numbers, n=n)
 
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
